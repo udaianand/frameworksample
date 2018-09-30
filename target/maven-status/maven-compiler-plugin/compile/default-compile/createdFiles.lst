@@ -1,0 +1,8 @@
+com\freecrm\qa\base\TestBase.class
+com\freecrm\qa\pages\LoginPage.class
+com\freecrm\qa\pages\DealsPage.class
+com\freecrm\qa\util\WriteExcel.class
+com\freecrm\qa\pages\ContactsPage.class
+com\freecrm\qa\pages\HomePage.class
+com\freecrm\qa\util\ReadExcelFile.class
+com\freecrm\qa\util\TestUtil.class
