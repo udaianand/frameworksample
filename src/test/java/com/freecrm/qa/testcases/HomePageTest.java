@@ -13,9 +13,6 @@ import com.freecrm.qa.util.TestUtil;
 
 public class HomePageTest extends TestBase {
 
-	/*
-	 * Checking the maven commands on cmd 1. mvn test - no build
-	 */
 	LoginPage loginPage;
 	HomePage homePage;
 	ContactsPage contactsPage;
@@ -23,7 +20,7 @@ public class HomePageTest extends TestBase {
 	@BeforeMethod
 	public void setUp() throws InterruptedException {
 		intialization();
-		loginPage = new LoginPage(driver);
+		loginPage = new LoginPage();
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
@@ -42,14 +39,14 @@ public class HomePageTest extends TestBase {
 
 	@Test(priority = 3)
 	public void viewContacts_test() {
-		TestUtil.switchToFrame();
+		TestUtil.switchToMainFrame();
 		contactsPage = homePage.clickContacts();
 
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		// driver.quit();
 
 	}
 

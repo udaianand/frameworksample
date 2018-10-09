@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Test Maven Suite">
+<suite name="SanityTestSuite">
 
-	<test name = "Test Maven Testing">
+	<listeners>
+		<listener class-name="com.freecrm.qa.extentreportlistener.ExtentReporterNG"/>
+	</listeners>
 
-		<packages>
-			<package name="com.freecrm.qa.testcases.*" />
-		</packages>
+	<test name= "FreeCrmBasics">
+	
+		<classes>
+			<class name="com.freecrm.qa.testcases.LoginPageTest"></class>
+			<class name="com.freecrm.qa.testcases.ContactsPageTest"></class>
+			<class name="com.freecrm.qa.testcases.HomePageTest"></class>
+		</classes>
 
 	</test>
 

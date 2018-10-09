@@ -1,16 +1,14 @@
 package com.freecrm.qa.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.freecrm.qa.base.TestBase;
 import com.freecrm.qa.util.TestUtil;
 
-public class HomePage {
-
-	WebDriver ldriver;
+public class HomePage extends TestBase {
 
 	// Page factory or Obj repository
 
@@ -21,7 +19,7 @@ public class HomePage {
 	WebElement contacts;
 
 	@FindBy(xpath = "//a[contains(text(),'New Contact')]")
-	WebElement newContactsLink;
+	public static WebElement newContactsLink;
 
 	@FindBy(xpath = "//a[contains(text(),'Deals')]")
 	WebElement deals;
@@ -30,19 +28,19 @@ public class HomePage {
 	WebElement tasks;
 
 	// 2.Initializing the page objects
-	public HomePage(WebDriver rdriver) {
-		ldriver = rdriver;
-		PageFactory.initElements(rdriver, this);
+	public HomePage() {
+
+		PageFactory.initElements(driver, this);
 
 	}
 
 	// 3. Actions
 	public String validateHomePageTitle() {
-		return ldriver.getTitle();
+		return driver.getTitle();
 	}
 
 	public boolean verifyUserNameLabel() {
-		TestUtil.switchToFrame();
+		TestUtil.switchToMainFrame();
 		return userNameLabel.isDisplayed();
 	}
 
@@ -53,11 +51,11 @@ public class HomePage {
 
 	}
 
-	public void clickOnNewContactLink() {
-		// TestUtil.switchToFrame();
-		Actions action = new Actions(ldriver);
+	public NewContactForm clickOnNewContactLink() {
+		Actions action = new Actions(driver);
 		action.moveToElement(contacts).build().perform();
 		newContactsLink.click();
+		return new NewContactForm();
 	}
 
 	public DealsPage clickDeals() {

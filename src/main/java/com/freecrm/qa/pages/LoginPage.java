@@ -1,14 +1,14 @@
 package com.freecrm.qa.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import com.freecrm.qa.base.TestBase;
+import com.freecrm.qa.util.TestUtil;
 
-	WebDriver ldriver;
+public class LoginPage extends TestBase {
 
 	// 1. Page factory
 	@FindBy(name = "username")
@@ -25,9 +25,8 @@ public class LoginPage {
 	WebElement crmLogo;
 
 	// 2.Initializing the page objects
-	public LoginPage(WebDriver rdriver) {
-		ldriver = rdriver;
-		PageFactory.initElements(rdriver, this);
+	public LoginPage() {
+		PageFactory.initElements(driver, this);
 
 	}
 
@@ -40,19 +39,24 @@ public class LoginPage {
 
 	// 3.Actions
 	public String validateLoginPageTitle() {
-		return ldriver.getTitle();
+		return driver.getTitle();
 	}
 
 	public boolean crmLogo() {
 		return crmLogo.isDisplayed();
 	}
 
-	public HomePage login(String un, String pwd) throws InterruptedException {
-		username.sendKeys(un);
+	public HomePage login(String user, String pwd) throws InterruptedException {
+		username.sendKeys(user);
 		password.sendKeys(pwd);
-		Thread.sleep(3000);
-		loginBtn.click();
-		return new HomePage(ldriver);
+		TestUtil.clickElementByJS(loginBtn, driver);
+		return new HomePage();
+	}
+
+	public HomePage loginData(String user) throws InterruptedException {
+		TestUtil.loginData(user);
+		return new HomePage();
+
 	}
 
 }
