@@ -3,11 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.freecrm.qa.dataloading.ParameterizedContacts">
+      <class name="com.freecrmold.qa.testcases.LoginPageTest">
         <methods>
-          <include name="newTest2"/>
+          <include name="loginPageTitleTest"/>
+          <include name="logoImageTest"/>
+          <include name="loginTestNewWay"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="loginTest"/>
+          <include name="loginWithDifferentUser"/>
         </methods>
-      </class> <!-- com.freecrm.qa.dataloading.ParameterizedContacts -->
+      </class> <!-- com.freecrmold.qa.testcases.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
